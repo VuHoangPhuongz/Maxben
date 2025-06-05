@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infographic Danh Mục Sản Phẩm MAXBEN</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            background-color: #232946;
+            color: #B8C1EC;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .text-glow {
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.3), 0 0 12px rgba(72, 145, 255, 0.3);
+        }
+        .card {
+            background-color: rgba(30, 36, 68, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(184, 193, 236, 0.2);
+        }
+        .stat-value {
+            color: #FFC048;
+        }
+        .section-title {
+            color: #FFFFFF;
+        }
+        .section-subtitle {
+             color: #B8C1EC;
+        }
+        .kpi-card {
+            border-left: 4px solid #4891FF;
+        }
+        nav {
+            background-color: rgba(35, 41, 70, 0.9);
+            backdrop-filter: blur(15px);
+        }
+        .ai-button {
+            background-color: #3DDC97;
+            color: #232946;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .ai-button:hover {
+            background-color: #2CC783;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+        }
+        .ai-response {
+            min-height: 100px;
+            padding: 1rem;
+            background-color: rgba(30, 36, 68, 0.9);
+            border: 1px solid rgba(72, 145, 255, 0.3);
+            border-radius: 0.75rem;
+            color: #B8C1EC;
+            text-align: left;
+        }
+    </style>
+</head>
+<body class="antialiased leading-relaxed">
+
+    <nav id="navbar" class="sticky top-0 z-50 p-4 shadow-lg">
+        <div class="container mx-auto flex justify-center items-center">
+            <div class="flex space-x-4 md:space-x-8 text-sm md:text-base">
+                <a href="#intro" class="hover:text-white transition-colors duration-300">Giới Thiệu</a>
+                <a href="#product-categories" class="hover:text-white transition-colors duration-300">Danh Mục</a>
+                <a href="#quality-metrics" class="hover:text-white transition-colors duration-300">Chất Lượng</a>
+                <a href="#applications" class="hover:text-white transition-colors duration-300">Ứng Dụng</a>
+                <a href="#ai-insights" class="hover:text-white transition-colors duration-300">AI Insights</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <header id="intro" class="text-center my-12 md:my-16 scroll-mt-20">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-4 text-glow">MAXBEN</h1>
+            <p class="text-xl md:text-2xl font-light section-subtitle">Khám Phá Danh Mục Sản Phẩm & Ưu Thế Vượt Trội</p>
+        </header>
+
+        <section id="product-categories" class="my-16 scroll-mt-20">
+            <h2 class="text-3xl font-bold text-center mb-2 section-title">Danh Mục Sản Phẩm Đa Dạng</h2>
+            <p class="text-center max-w-3xl mx-auto mb-10 section-subtitle">MAXBEN cung cấp một hệ sinh thái sản phẩm chiếu sáng phong phú, đáp ứng mọi nhu cầu từ dân dụng đến công nghiệp.</p>
+            <div class="card rounded-xl shadow-2xl p-6">
+                <h3 class="text-xl font-semibold text-center mb-6 text-white">Phân Loại Sản Phẩm Chính</h3>
+                <div class="chart-container h-64 md:h-80">
+                    <canvas id="productCategoryChart"></canvas>
+                </div>
+                <p class="text-center mt-6 text-sm">Biểu đồ thể hiện sự đa dạng trong danh mục sản phẩm của MAXBEN, với các nhóm chính bao gồm đèn dân dụng, đèn chuyên dụng và các giải pháp chiếu sáng đặc biệt như đèn pin và quạt trần đèn.</p>
+            </div>
+        </section>
+
+        <section id="quality-metrics" class="my-16 scroll-mt-20">
+            <h2 class="text-3xl font-bold text-center mb-2 section-title">Chất Lượng & Công Nghệ Tiên Phong</h2>
+            <p class="text-center max-w-3xl mx-auto mb-10 section-subtitle">Cam kết mang lại sản phẩm chất lượng cao nhất với hiệu suất vượt trội và độ bền ấn tượng.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                <div class="card rounded-xl p-6 text-center kpi-card">
+                    <p class="text-base font-medium mb-2">Chỉ Số Hoàn Màu Tối Đa</p>
+                    <p class="text-4xl font-bold stat-value">CRI >98</p>
+                    <p class="text-sm">Ánh sáng chân thực</p>
+                </div>
+                <div class="card rounded-xl p-6 text-center kpi-card">
+                    <p class="text-base font-medium mb-2">Tuổi Thọ Cao Nhất</p>
+                    <p class="text-4xl font-bold stat-value">30,000+</p>
+                    <p class="text-sm">giờ chiếu sáng</p>
+                </div>
+                <div class="card rounded-xl p-6 text-center kpi-card">
+                    <p class="text-base font-medium mb-2">Bảo Hành Dài Hạn</p>
+                    <p class="text-4xl font-bold stat-value">36-60</p>
+                    <p class="text-sm">tháng</p>
+                </div>
+            </div>
+
+            <div class="card rounded-xl shadow-2xl p-6">
+                <h3 class="text-xl font-semibold text-center mb-6 text-white">So Sánh Hiệu Suất Sản Phẩm Theo Chỉ Số CRI</h3>
+                <div class="chart-container h-80 md:h-96">
+                    <canvas id="criComparisonChart"></canvas>
+                </div>
+                <p class="text-center mt-6 text-sm">Biểu đồ so sánh mức độ phổ biến của các dải chỉ số hoàn màu (CRI) trong danh mục sản phẩm MAXBEN. Đa số sản phẩm đạt CRI cao, đảm bảo chất lượng ánh sáng tốt nhất.</p>
+            </div>
+        </section>
+
+        <section id="applications" class="my-16 scroll-mt-20">
+            <h2 class="text-3xl font-bold text-center mb-2 section-title">Ứng Dụng Đa Dạng Trong Đời Sống</h2>
+            <p class="text-center max-w-3xl mx-auto mb-10 section-subtitle">Các sản phẩm MAXBEN được thiết kế để phục vụ hiệu quả trong nhiều môi trường khác nhau, từ không gian sống đến khu vực công nghiệp.</p>
+            <div class="card rounded-xl shadow-2xl p-6">
+                 <h3 class="text-xl font-semibold text-center mb-6 text-white">Phân Bổ Sản Phẩm Theo Lĩnh Vực Ứng Dụng</h3>
+                <div class="chart-container h-80 md:h-96">
+                    <canvas id="applicationChart"></canvas>
+                </div>
+                <p class="text-center mt-6 text-sm">MAXBEN cung cấp giải pháp toàn diện cho cả không gian dân dụng, thương mại và các ứng dụng chuyên biệt, thể hiện khả năng thích ứng với nhiều loại hình dự án.</p>
+            </div>
+        </section>
+
+        <section id="ai-insights" class="my-16 scroll-mt-20">
+            <h2 class="text-3xl font-bold text-center mb-2 section-title">Phân Tích Chuyên Sâu AI ✨</h2>
+            <p class="text-center max-w-3xl mx-auto mb-10 section-subtitle">Sử dụng sức mạnh của trí tuệ nhân tạo để hiểu sâu hơn về các ưu thế và ý nghĩa dữ liệu sản phẩm.</p>
+            <div class="card rounded-xl shadow-2xl p-6 flex flex-col items-center">
+                <div class="flex flex-wrap justify-center gap-4 mb-6">
+                    <button id="getProductDiversityInsight" class="ai-button">Đa dạng Danh mục ✨</button>
+                    <button id="getQualityAdvantageInsight" class="ai-button">Ưu thế Chất lượng ✨</button>
+                    <button id="getApplicationAreasInsight" class="ai-button">Mở rộng Ứng dụng ✨</button>
+                </div>
+                <div id="aiResponse" class="ai-response w-full max-w-4xl text-gray-300">
+                    Nhấp vào một nút để nhận phân tích được tạo bởi AI.
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-900/50 text-center p-6 mt-16">
+        <p class="font-bold text-lg text-white">KOSOON FL FUTURE LIGHT MAXBEN</p>
+        <p class="text-sm">Tròn Chữ Tín - Vẹn Niềm Tin</p>
+    </footer>
+
+    <script>
+        const vibrantPalette = {
+            red: '#FF5C5C',
+            orange: '#FFC048',
+            blue: '#4891FF',
+            green: '#3DDC97',
+            lightAccent: '#B8C1EC',
+            white: '#FFFFFF'
+        };
+
+        const chartTooltipConfig = {
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            if (Array.isArray(label)) {
+                              return label.join(' ');
+                            } else {
+                              return label;
+                            }
+                        }
+                    }
+                }
+            }
+        };
+        
+        function wrapLabel(label, maxWidth) {
+            if (typeof label !== 'string' || label.length <= maxWidth) {
+                return label;
+            }
+            const words = label.split(' ');
+            let lines = [];
+            let currentLine = '';
+            words.forEach(word => {
+                if ((currentLine + ' ' + word).trim().length > maxWidth) {
+                    lines.push(currentLine);
+                    currentLine = word;
+                } else {
+                    currentLine = (currentLine + ' ' + word).trim();
+                }
+            });
+            lines.push(currentLine);
+            return lines;
+        }
+
+        // Data for Product Category Chart
+        const productCategoryData = {
+            labels: [
+                ['Đèn LED', 'Bulb'],
+                ['Đèn Tuýp', 'LED'],
+                ['Đèn LED', 'Âm Trần'],
+                ['Đèn LED', 'Ốp Trần'],
+                ['Dây LED'],
+                ['Đèn Pha LED'],
+                ['Đèn Năng', 'Lượng Mặt Trời'],
+                ['Đèn Ống Bơ'],
+                ['Quạt Trần', 'Đèn'],
+                ['Đèn Pin']
+            ],
+            counts: [2, 4, 7, 4, 5, 2, 3, 3, 2, 4] // Number of sub-types in each main category
+        };
+
+        const productCategoryCtx = document.getElementById('productCategoryChart').getContext('2d');
+        new Chart(productCategoryCtx, {
+            type: 'bar',
+            data: {
+                labels: productCategoryData.labels,
+                datasets: [{
+                    label: 'Số loại sản phẩm',
+                    data: productCategoryData.counts,
+                    backgroundColor: [
+                        vibrantPalette.blue,
+                        vibrantPalette.green,
+                        vibrantPalette.orange,
+                        vibrantPalette.red,
+                        vibrantPalette.blue,
+                        vibrantPalette.green,
+                        vibrantPalette.orange,
+                        vibrantPalette.red,
+                        vibrantPalette.blue,
+                        vibrantPalette.green
+                    ],
+                    borderRadius: 5
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    ...chartTooltipConfig.plugins
+                },
+                scales: {
+                    y: {
+                        ticks: {
+                            color: vibrantPalette.lightAccent,
+                            font: { size: 12 }
+                        },
+                        grid: { color: 'rgba(184, 193, 236, 0.1)' }
+                    },
+                    x: {
+                        ticks: {
+                            color: vibrantPalette.lightAccent,
+                            font: { size: 12 }
+                        },
+                        grid: { color: 'rgba(184, 193, 236, 0.1)' }
+                    }
+                }
+            }
+        });
+
+        // Data for CRI Comparison Chart
+        const criData = {
+            labels: ['CRI > 95', 'CRI > 90', 'CRI > 80'],
+            counts: [
+                // Count products with CRI > 95 (Spark V3, Spotlight ME, Prolux-SP7, SP2, SPX1, SPH1, TT, Ống Bơ COB-S/H)
+                10,
+                // Count products with CRI > 90 (Âm trần Lucy/Pro/ZEN, Rọi ray COB, Panel, Thả VP, Nhà xưởng) - exclude >95
+                6,
+                // Count products with CRI > 80 (Bulb, Tuýp, Ốp trần, Âm trần Happy/Siêu mỏng/Classic/Plush/Happy/Tràn viền, Pha LED V2, RGB)
+                18
+            ]
+        };
+
+        const criComparisonCtx = document.getElementById('criComparisonChart').getContext('2d');
+        new Chart(criComparisonCtx, {
+            type: 'pie',
+            data: {
+                labels: criData.labels,
+                datasets: [{
+                    label: 'Số lượng sản phẩm',
+                    data: criData.counts,
+                    backgroundColor: [vibrantPalette.blue, vibrantPalette.green, vibrantPalette.orange],
+                    borderColor: '#232946',
+                    borderWidth: 4,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            color: vibrantPalette.lightAccent,
+                            font: { size: 14 },
+                            boxWidth: 20
+                        }
+                    },
+                    ...chartTooltipConfig.plugins
+                }
+            }
+        });
+
+        // Data for Application Areas Chart
+        const applicationData = {
+            labels: [
+                ['Dân dụng', '& Trang trí'],
+                ['Thương mại', '& Văn phòng'],
+                ['Công nghiệp', '& Nhà xưởng'],
+                ['Ngoài trời', '& Chuyên dụng'],
+                ['Di động', '& Đặc biệt']
+            ],
+            productCounts: [
+                10, // Bulb, Tuýp T8, Âm trần (Happy, Super Thin, Lucy, Lucy Pro, Zen), Ốp trần (Classic, Plush, Happy, Tràn viền)
+                8, // Tuýp Bán Nguyệt/Oval, Âm trần (Happy, Super Thin, Lucy, Lucy Pro, Zen, Prime, Spark, Kim Cương, Artemis, Sky, Panel, Rọi ray, Thả VP, Ống bơ COB-S/H)
+                5, // Tuýp T8, Panel, Thả VP, Nhà xưởng, Ống bơ COB-H
+                4, // Pha LED V2, RGB, NLMT (Pha, Trụ, Tường)
+                2  // Đèn Pin, Quạt Trần Đèn
+            ]
+        };
+
+        const applicationChartCtx = document.getElementById('applicationChart').getContext('2d');
+        new Chart(applicationChartCtx, {
+            type: 'polarArea',
+            data: {
+                labels: applicationData.labels,
+                datasets: [{
+                    label: 'Số lượng sản phẩm',
+                    data: applicationData.productCounts,
+                    backgroundColor: [
+                        vibrantPalette.blue,
+                        vibrantPalette.green,
+                        vibrantPalette.orange,
+                        vibrantPalette.red,
+                        vibrantPalette.lightAccent
+                    ],
+                    borderColor: '#232946',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            color: vibrantPalette.lightAccent,
+                            font: { size: 14 },
+                            boxWidth: 20
+                        }
+                    },
+                    ...chartTooltipConfig.plugins
+                },
+                scales: {
+                    r: {
+                        grid: { color: 'rgba(184, 193, 236, 0.1)' },
+                        ticks: {
+                            display: false,
+                            color: vibrantPalette.lightAccent
+                        },
+                        angleLines: { color: 'rgba(184, 193, 236, 0.1)' }
+                    }
+                }
+            }
+        });
+
+        const nav = document.getElementById('navbar');
+        let lastScrollY = window.scrollY;
+
+        window.addEventListener('scroll', () => {
+            if (lastScrollY < window.scrollY) {
+                nav.classList.add('hidden');
+            } else {
+                nav.classList.remove('hidden');
+            }
+            lastScrollY = window.scrollY;
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        const aiResponseDiv = document.getElementById('aiResponse');
+        const getProductDiversityInsightBtn = document.getElementById('getProductDiversityInsight');
+        const getQualityAdvantageInsightBtn = document.getElementById('getQualityAdvantageInsight');
+        const getApplicationAreasInsightBtn = document.getElementById('getApplicationAreasInsight');
+
+        async function getGeminiInsight(prompt) {
+            aiResponseDiv.innerHTML = '<p class="text-center animate-pulse">Đang tạo phân tích AI...</p>';
+            try {
+                let chatHistory = [];
+                chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                const payload = { contents: chatHistory };
+                const apiKey = ""; // API Key is provided by the environment during runtime.
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    const text = result.candidates[0].content.parts[0].text;
+                    aiResponseDiv.innerHTML = `<p>${text}</p>`;
+                } else {
+                    aiResponseDiv.innerHTML = '<p class="text-red-400">Không thể tạo phân tích. Vui lòng thử lại sau.</p>';
+                }
+            } catch (error) {
+                aiResponseDiv.innerHTML = `<p class="text-red-400">Đã xảy ra lỗi: ${error.message}</p>`;
+            }
+        }
+
+        getProductDiversityInsightBtn.addEventListener('click', () => {
+            const prompt = `Dựa trên dữ liệu về số lượng loại sản phẩm của MAXBEN (Đèn LED Bulb: 2, Đèn Tuýp LED: 4, Đèn LED Âm Trần: 7, Đèn LED Ốp Trần: 4, Dây LED: 5, Đèn Pha LED: 2, Đèn Năng Lượng Mặt Trời: 3, Đèn Ống Bơ: 3, Quạt Trần Đèn: 2, Đèn Pin: 4), hãy phân tích mức độ đa dạng của danh mục sản phẩm và tầm quan trọng của nó trong việc đáp ứng nhu cầu thị trường.`;
+            getGeminiInsight(prompt);
+        });
+
+        getQualityAdvantageInsightBtn.addEventListener('click', () => {
+            const prompt = `Dựa trên các chỉ số chất lượng chính của sản phẩm MAXBEN (CRI > 98, Tuổi thọ > 30,000 giờ, Bảo hành 36-60 tháng), hãy giải thích ưu thế cạnh tranh của MAXBEN về chất lượng và độ bền so với các sản phẩm thông thường trên thị trường.`;
+            getGeminiInsight(prompt);
+        });
+
+        getApplicationAreasInsightBtn.addEventListener('click', () => {
+            const prompt = `Dựa trên dữ liệu phân bổ sản phẩm theo lĩnh vực ứng dụng của MAXBEN (Dân dụng & Trang trí: 10, Thương mại & Văn phòng: 8, Công nghiệp & Nhà xưởng: 5, Ngoài trời & Chuyên dụng: 4, Di động & Đặc biệt: 2), hãy phân tích cách MAXBEN mở rộng phạm vi ứng dụng và lợi ích của việc đa dạng hóa này đối với khách hàng.`;
+            getGeminiInsight(prompt);
+        });
+    </script>
+</body>
+</html>
