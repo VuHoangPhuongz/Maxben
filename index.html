@@ -53,27 +53,39 @@
             background-color: rgba(35, 41, 70, 0.9);
             backdrop-filter: blur(15px);
         }
-        .ai-button {
-            background-color: #3DDC97;
-            color: #232946;
-            padding: 0.75rem 1.5rem;
-            border-radius: 9999px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        .product-category-button {
+            background-color: #4891FF;
+            color: #FFFFFF;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
         }
-        .ai-button:hover {
-            background-color: #2CC783;
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+        .product-category-button:hover {
+            background-color: #387AE2;
         }
-        .ai-response {
-            min-height: 100px;
-            padding: 1rem;
-            background-color: rgba(30, 36, 68, 0.9);
-            border: 1px solid rgba(72, 145, 255, 0.3);
-            border-radius: 0.75rem;
+        /* Table styling */
+        .product-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
             color: #B8C1EC;
+        }
+        .product-table th, .product-table td {
+            border: 1px solid rgba(184, 193, 236, 0.2);
+            padding: 0.75rem;
             text-align: left;
+        }
+        .product-table th {
+            background-color: rgba(72, 145, 255, 0.3);
+            font-weight: 600;
+            color: #FFFFFF;
+        }
+        .product-table tr:nth-child(even) {
+            background-color: rgba(30, 36, 68, 0.5);
+        }
+        .product-table tr:hover {
+            background-color: rgba(72, 145, 255, 0.1);
         }
     </style>
 </head>
@@ -86,7 +98,7 @@
                 <a href="#product-categories" class="hover:text-white transition-colors duration-300">Danh Mục</a>
                 <a href="#quality-metrics" class="hover:text-white transition-colors duration-300">Chất Lượng</a>
                 <a href="#applications" class="hover:text-white transition-colors duration-300">Ứng Dụng</a>
-                <a href="#ai-insights" class="hover:text-white transition-colors duration-300">AI Insights</a>
+                <a href="#product-details-section" class="hover:text-white transition-colors duration-300">Chi Tiết SP</a>
             </div>
         </div>
     </nav>
@@ -153,17 +165,25 @@
             </div>
         </section>
 
-        <section id="ai-insights" class="my-16 scroll-mt-20">
-            <h2 class="text-3xl font-bold text-center mb-2 section-title">Phân Tích Chuyên Sâu AI ✨</h2>
-            <p class="text-center max-w-3xl mx-auto mb-10 section-subtitle">Sử dụng sức mạnh của trí tuệ nhân tạo để hiểu sâu hơn về các ưu thế và ý nghĩa dữ liệu sản phẩm.</p>
-            <div class="card rounded-xl shadow-2xl p-6 flex flex-col items-center">
-                <div class="flex flex-wrap justify-center gap-4 mb-6">
-                    <button id="getProductDiversityInsight" class="ai-button">Đa dạng Danh mục ✨</button>
-                    <button id="getQualityAdvantageInsight" class="ai-button">Ưu thế Chất lượng ✨</button>
-                    <button id="getApplicationAreasInsight" class="ai-button">Mở rộng Ứng dụng ✨</button>
+        <section id="product-details-section" class="my-16 scroll-mt-20">
+            <h2 class="text-3xl font-bold text-center mb-2 section-title">Chi Tiết Sản Phẩm</h2>
+            <p class="text-center max-w-3xl mx-auto mb-10 section-subtitle">Khám phá thông tin chi tiết về từng dòng sản phẩm MAXBEN, bao gồm đặc điểm, thông số kỹ thuật và giá cả.</p>
+            <div class="card rounded-xl shadow-2xl p-6">
+                <h3 class="text-xl font-semibold text-center mb-6 text-white">Chọn Danh Mục Để Xem Chi Tiết</h3>
+                <div class="flex flex-wrap justify-center gap-3 mb-6">
+                    <button class="product-category-button" data-category="Đèn LED Bulb">Đèn LED Bulb</button>
+                    <button class="product-category-button" data-category="Đèn Tuýp LED">Đèn Tuýp LED</button>
+                    <button class="product-category-button" data-category="Đèn LED Âm Trần">Đèn LED Âm Trần</button>
+                    <button class="product-category-button" data-category="Đèn LED Ốp Trần">Đèn LED Ốp Trần</button>
+                    <button class="product-category-button" data-category="Dây LED">Dây LED</button>
+                    <button class="product-category-button" data-category="Đèn Pha LED">Đèn Pha LED</button>
+                    <button class="product-category-button" data-category="Đèn Năng Lượng Mặt Trời">Đèn Năng Lượng Mặt Trời</button>
+                    <button class="product-category-button" data-category="Đèn Ống Bơ">Đèn Ống Bơ</button>
+                    <button class="product-category-button" data-category="Quạt Trần Đèn">Quạt Trần Đèn</button>
+                    <button class="product-category-button" data-category="Đèn Pin">Đèn Pin</button>
                 </div>
-                <div id="aiResponse" class="ai-response w-full max-w-4xl text-gray-300">
-                    Nhấp vào một nút để nhận phân tích được tạo bởi AI.
+                <div id="productDetailsContent" class="h-[500px] overflow-y-auto p-4 bg-gray-800/50 rounded-lg border border-gray-700">
+                    <p class="text-center text-gray-400">Vui lòng chọn một danh mục sản phẩm để xem chi tiết.</p>
                 </div>
             </div>
         </section>
@@ -294,12 +314,9 @@
         const criData = {
             labels: ['CRI > 95', 'CRI > 90', 'CRI > 80'],
             counts: [
-                // Count products with CRI > 95 (Spark V3, Spotlight ME, Prolux-SP7, SP2, SPX1, SPH1, TT, Ống Bơ COB-S/H)
-                10,
-                // Count products with CRI > 90 (Âm trần Lucy/Pro/ZEN, Rọi ray COB, Panel, Thả VP, Nhà xưởng) - exclude >95
-                6,
-                // Count products with CRI > 80 (Bulb, Tuýp, Ốp trần, Âm trần Happy/Siêu mỏng/Classic/Plush/Happy/Tràn viền, Pha LED V2, RGB)
-                18
+                10, // Spark V3, Spotlight ME, Prolux-SP7, SP2, SPX1, SPH1, TT, Ống Bơ COB-S/H, Âm trần Prime
+                6, // Âm trần Lucy/Pro/ZEN, Rọi ray COB, Panel, Thả VP, Nhà xưởng
+                18 // Bulb, Tuýp, Ốp trần, Âm trần Happy/Siêu mỏng/Classic/Plush/Happy/Tràn viền, Pha LED V2, RGB
             ]
         };
 
@@ -419,54 +436,604 @@
             });
         });
 
-        const aiResponseDiv = document.getElementById('aiResponse');
-        const getProductDiversityInsightBtn = document.getElementById('getProductDiversityInsight');
-        const getQualityAdvantageInsightBtn = document.getElementById('getQualityAdvantageInsight');
-        const getApplicationAreasInsightBtn = document.getElementById('getApplicationAreasInsight');
-
-        async function getGeminiInsight(prompt) {
-            aiResponseDiv.innerHTML = '<p class="text-center animate-pulse">Đang tạo phân tích AI...</p>';
-            try {
-                let chatHistory = [];
-                chatHistory.push({ role: "user", parts: [{ text: prompt }] });
-                const payload = { contents: chatHistory };
-                const apiKey = ""; // API Key is provided by the environment during runtime.
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
-
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-
-                const result = await response.json();
-                if (result.candidates && result.candidates.length > 0 &&
-                    result.candidates[0].content && result.candidates[0].content.parts &&
-                    result.candidates[0].content.parts.length > 0) {
-                    const text = result.candidates[0].content.parts[0].text;
-                    aiResponseDiv.innerHTML = `<p>${text}</p>`;
-                } else {
-                    aiResponseDiv.innerHTML = '<p class="text-red-400">Không thể tạo phân tích. Vui lòng thử lại sau.</p>';
+        // Detailed Product Data
+        const productDetails = {
+            "Đèn LED Bulb": [
+                {
+                    name: "Đèn LED Bulb tròn",
+                    image: "https://i.postimg.cc/TY14wmX8/page2-img2.jpg",
+                    description: "Kiểu dáng tròn, thay thế đèn Compact và sợi đốt. Công suất <20W. Đui E27.",
+                    features: "Nhỏ gọn, thẩm mỹ, vỏ nhôm bọc nhựa, dải điện áp rộng, tuổi thọ 15000h, CRI >80.",
+                    applications: "Chiếu sáng dân dụng, trang trí.",
+                    variants: [
+                        { power: "3W", light: "6500K/3000K", price: "31.000 VND" },
+                        { power: "5W", light: "6500K/3000K", price: "39.000 VND" },
+                        { power: "7W", light: "6500K/3000K", price: "47.000 VND" },
+                        { power: "9W", light: "6500K/3000K", price: "53.000 VND" },
+                        { power: "12W", light: "6500K/3000K", price: "63.000 VND" },
+                        { power: "15W", light: "6500K/3000K", price: "73.000 VND" },
+                        { power: "18W", light: "6500K/3000K", price: "95.000 VND" },
+                        { power: "20W", light: "6500K/3000K", price: "116.000 VND" }
+                    ]
+                },
+                {
+                    name: "Đèn LED Bulb trụ Happy",
+                    image: "https://i.postimg.cc/Fs6nJR9Y/page2-img3.jpg",
+                    description: "Kiểu dáng trụ, thay thế đèn Compact và sợi đốt. Công suất ≥20W. Đui E27.",
+                    features: "Vỏ nhôm bọc nhựa, dải điện áp 170V-240V, hiệu suất 90lm/W, CRI >80, linh kiện IC mới, an toàn.",
+                    applications: "Chiếu sáng dân dụng, trang trí.",
+                    variants: [
+                        { power: "20W", light: "6500K/3000K", price: "69.000 VND" },
+                        { power: "30W", light: "6500K/3000K", price: "109.000 VND" },
+                        { power: "40W", light: "6500K/3000K", price: "139.000 VND" },
+                        { power: "50W", light: "6500K/3000K", price: "189.000 VND" }
+                    ]
                 }
-            } catch (error) {
-                aiResponseDiv.innerHTML = `<p class="text-red-400">Đã xảy ra lỗi: ${error.message}</p>`;
+            ],
+            "Đèn Tuýp LED": [
+                {
+                    name: "Đèn tuýp LED T8",
+                    image: "https://i.postimg.cc/Bv9YMVPs/page2-img4.jpg",
+                    description: "Tuýp dài 0.6/1.2m, nhiều bóng led nhỏ. Thay thế đèn huỳnh quang.",
+                    features: "Hiệu suất 100lm/W, CRI >80, dải điện áp 170V-240V, ống thủy tinh bền, đui đèn thông dụng, tuổi thọ 30000H.",
+                    applications: "Nhà ở, văn phòng, siêu thị, cửa hàng, nhà để xe, khu công nghiệp.",
+                    variants: [
+                        { power: "9W", light: "6500K", price: "78.000 VND" },
+                        { power: "18W", light: "6500K", price: "86.000 VND" },
+                        { power: "28W", light: "6500K", price: "118.000 VND" },
+                        { power: "45W", light: "6500K", price: "149.000 VND" }
+                    ]
+                },
+                {
+                    name: "Đèn tuýp LED bán nguyệt",
+                    image: "https://i.postimg.cc/JhNTg5jX/page2-img5.jpg",
+                    description: "Thiết kế hình vòm cong bán nguyệt.",
+                    features: "Hiệu suất 100lm/W, CRI >80, dải điện áp 170V-240V, tuổi thọ 30000H, mặt khuếch tán PC, chip SMD Seoul, Driver ổn định.",
+                    applications: "Văn phòng, cửa hàng, siêu thị, nhà kho, nhà xưởng, gia đình, khu vực y tế.",
+                    variants: [
+                        { power: "20W", light: "6500K", price: "187.000 VND" },
+                        { power: "40W", light: "6500K", price: "262.000 VND" }
+                    ]
+                },
+                {
+                    name: "Đèn tuýp LED oval Plush",
+                    image: "https://i.postimg.cc/x1bpG2Ct/page2-img6.jpg",
+                    description: "Thiết kế hình vòm cong Oval.",
+                    features: "Hiệu suất 100lm/W, CRI >80, dải điện áp 170V-240V, tuổi thọ 30000H, mặt khuếch tán PC, chip SMD Seoul, Driver ổn định.",
+                    applications: "Văn phòng, cửa hàng, siêu thị, nhà kho, nhà xưởng, gia đình, khu vực y tế.",
+                    variants: [
+                        { power: "20W", light: "6500K", price: "199.000 VND" },
+                        { power: "40W", light: "6500K", price: "262.000 VND" },
+                        { power: "60W", light: "6500K", price: "389.000 VND" },
+                        { power: "70W", light: "6500K", price: "459.000 VND" }
+                    ]
+                },
+                {
+                    name: "Đèn tuýp LED oval TC",
+                    image: "https://i.postimg.cc/B6JhGPCV/page2-img7.jpg",
+                    description: "Thiết kế hình vòm cong bán nguyệt.",
+                    features: "Hiệu suất 100lm/W, CRI >80, dải điện áp 170V-240V, tuổi thọ 25000H, mặt khuếch tán PC, chip 2835, Driver ổn định.",
+                    applications: "Văn phòng, cửa hàng, siêu thị, nhà kho, nhà xưởng, gia đình, khu vực y tế.",
+                    variants: [
+                        { power: "45W", light: "6500K/4000K", price: "270.000 VND" },
+                        { power: "70W", light: "6500K", price: "399.000 VND" }
+                    ]
+                }
+            ],
+            "Đèn LED Âm Trần": [
+                {
+                    name: "Đèn LED âm trần Happy V2",
+                    image: "https://i.postimg.cc/D0ZBSVHQ/page3-img2.jpg",
+                    description: "Đèn LED âm trần ánh sáng tỏa, thiết kế tròn. Cải tiến từ Happy.",
+                    features: "Hiệu suất 85lm/W, CRI > 80, dải điện áp 170V-240V.",
+                    applications: "Chiếu sáng dân dụng, văn phòng.",
+                    variants: [
+                        { power: "9W", light: "6500K/4000K/Đổi màu", price: "77.000 VND" },
+                        { power: "12W", light: "6500K/4000K/Đổi màu", price: "99.000 VND" }
+                    ]
+                },
+                {
+                    name: "Đèn LED âm trần siêu mỏng",
+                    image: "https://i.postimg.cc/2yKTvcNs/page3-img3.jpg",
+                    description: "Đèn LED âm trần ánh sáng tỏa, thiết kế siêu mỏng.",
+                    features: "Hiệu suất 85lm/W, CRI > 80, dải điện áp 170V-240V.",
+                    applications: "Chiếu sáng dân dụng, văn phòng.",
+                    variants: [
+                        { power: "9W", light: "6500K/3000K/Đổi màu", price: "135.000 VND" },
+                        { power: "12W", light: "6500K/3000K/Đổi màu", price: "175.000 VND" }
+                    ]
+                },
+                {
+                    name: "Đèn LED âm trần Lucy",
+                    image: "https://i.postimg.cc/HWZ6fx86/page3-img4.jpg",
+                    description: "Đèn LED âm trần ánh sáng tỏa, thiết kế tròn.",
+                    features: "Hiệu suất 85~100lm/W, CRI > 90, dải điện áp 170V-240V.",
+                    applications: "Chiếu sáng dân dụng, văn phòng.",
+                    variants: [
+                        { power: "9W", light: "6500K/4000K/3000K/Đổi màu", price: "125.000 VND" },
+                        { power: "12W", light: "6500K/4000K/3000K/Đổi màu", price: "177.000 VND" }
+                    ]
+                },
+                {
+                    name: "Đèn LED âm trần Lucy Pro",
+                    image: "https://i.postimg.cc/TP60r5B3/page3-img7.jpg",
+                    description: "Đèn LED âm trần ánh sáng tỏa, thiết kế tròn. Cải tiến từ Lucy.",
+                    features: "Hiệu suất 85 Lm/W, CRI > 90, dải điện áp 170V-240V.",
+                    applications: "Chiếu sáng dân dụng, văn phòng.",
+                    variants: [
+                        { power: "7W", light: "6500K/4000K/3000K/Đổi màu", price: "179.000 VND" },
+                        { power: "9W", light: "6500K/4000K/3000K/Đổi màu", price: "189.000 VND" },
+                        { power: "11W", light: "6500K/4000K/3000K/Đổi màu", price: "199.000 VND" }
+                    ]
+                },
+                {
+                    name: "Đèn LED âm trần chống chói ZEN",
+                    image: "https://i.postimg.cc/Z53jBx7Q/page3-img8.jpg",
+                    description: "Đèn LED âm trần ánh sáng tỏa, thiết kế tròn, chống chói.",
+                    features: "Hiệu suất 85~100lm/W, CRI > 90, dải điện áp 170V-240V.",
+                    applications: "Chiếu sáng dân dụng, văn phòng.",
+                    variants: [
+                        { power: "10W", light: "6500K/4000K/3000K/Đổi màu", price: "189.000 VND" },
+                        { power: "12W", light: "6500K/4000K/3000K/Đổi màu", price: "276.000 VND" },
+                        { power: "15W", light: "6500K/4000K/3000K/Đổi màu", price: "376.000 VND" }
+                    ]
+                },
+                {
+                    name: "Âm trần Smart V2 (Kosoom)",
+                    image: "https://i.postimg.cc/D0ZBSVHQ/page3-img2.jpg",
+                    description: "Vỏ nhựa, công nghệ DOB, góc chiếu 120°. Sử dụng trong nhà hiện đại có trần thạch cao.",
+                    features: "Chip LED Sanan (giảm sáng 15% sau 3 năm), thiết kế độc quyền, tấm khuếch tán PMMA mờ, PCB tản nhiệt tốt, vỏ PC chống cháy.",
+                    applications: "Nhà, trung tâm mua sắm, khách sạn, cửa hàng, văn phòng, showroom, bệnh viện, siêu thị,...",
+                    variants: [
+                        { power: "5W", light: "3000K/4000K/6500K", price: "Liên hệ" },
+                        { power: "8W", light: "3000K/4000K/6500K", price: "Liên hệ" },
+                        { power: "12W", light: "3000K/4000K/6500K", price: "Liên hệ" },
+                        { power: "15W", light: "3000K/4000K/6500K", price: "Liên hệ" },
+                        { power: "24W", light: "3000K/4000K/6500K", price: "Liên hệ" }
+                    ]
+                },
+                {
+                    name: "Âm trần ngôi sao (Kosoom)",
+                    image: "https://i.postimg.cc/2yKTvcNs/page3-img3.jpg",
+                    description: "Vỏ nhôm, công nghệ DOB, góc chiếu 120°.",
+                    features: "Chip LED Sanan (giảm sáng 15% sau 3 năm), thiết kế độc quyền, bề mặt đánh bóng, tấm khuếch tán PMMA mờ.",
+                    applications: "Nhà, trung tâm mua sắm, khách sạn, cửa hàng.",
+                    variants: [
+                        { power: "5W", light: "6500K/4000K/3000K/Đổi màu", price: "Liên hệ" },
+                        { power: "8W", light: "6500K/4000K/3000K/Đổi màu", price: "Liên hệ" },
+                        { power: "12W", light: "6500K/4000K/3000K/Đổi màu", price: "Liên hệ" },
+                        { power: "15W", light: "6500K/4000K/3000K/Đổi màu", price: "Liên hệ" }
+                    ]
+                },
+                {
+                    name: "Siêu mỏng (Kosoom)",
+                    image: "https://i.postimg.cc/HWZ6fx86/page3-img4.jpg",
+                    description: "Vỏ nhôm, Driver+Chip LED rời, góc chiếu 120°.",
+                    features: "Chip LED Sanan (giảm sáng 15% sau 3 năm), thiết kế độc quyền, bề mặt đánh bóng, tấm khuếch tán PMMA mờ, thiết kế siêu mỏng.",
+                    applications: "Nhà, trung tâm mua sắm, khách sạn, cửa hàng.",
+                    variants: [
+                        { power: "10W", light: "4000K/6500K", price: "Liên hệ" },
+                        { power: "15W", light: "4000K/6500K", price: "Liên hệ" },
+                        { power: "20W", light: "4000K/6500K", price: "Liên hệ" }
+                    ]
+                },
+                {
+                    name: "Prime (Kosoom)",
+                    image: "https://i.postimg.cc/QxFfs3ph/page3-img5.jpg",
+                    description: "Vỏ nhôm, công nghệ DOB, góc chiếu 60°.",
+                    features: "Chip LED Sanan (giảm sáng 15% sau 3 năm), thiết kế độc quyền, bề mặt đánh bóng, tấm khuếch tán PMMA mờ, góc chiếu 60° chống chói.",
+                    applications: "Nhà, trung tâm mua sắm, khách sạn, cửa hàng. Chiếu sáng điểm nhấn.",
+                    variants: [
+                        { power: "10W", light: "4000K/6500K", price: "Liên hệ" },
+                        { power: "15W", light: "4000K/6500K", price: "Liên hệ" },
+                        { power: "20W", light: "4000K/6500K", price: "Liên hệ" },
+                        { power: "30W", light: "4000K/6500K", price: "Liên hệ" }
+                    ]
+                },
+                {
+                    name: "Spark (Kosoom)",
+                    image: "https://i.postimg.cc/Jh5qK4Wc/page3-img9.jpg",
+                    description: "Sử dụng chip COB, độ hoàn màu cao, ánh sáng tập trung.",
+                    features: "Chip COB CRI>90, thấu kính PMMA, góc điều chỉnh 18°, cấu trúc nhôm tản nhiệt.",
+                    applications: "Nhà, trung tâm mua sắm, khách sạn, cửa hàng, phòng trưng bày, triển lãm.",
+                    variants: [
+                        { power: "7W", light: "3000K/4000K/6500K", price: "Liên hệ" },
+                        { power: "10W", light: "3000K/4000K/6500K", price: "Liên hệ" },
+                        { power: "20W", light: "3000K/4000K/6500K", price: "Liên hệ" }
+                    ]
+                },
+                {
+                    name: "Spark V3 (Kosoom)",
+                    image: "https://i.postimg.cc/p3y8v91/Image-32.png", // Using a fallback image for Spark V3
+                    description: "Tương tự Spark.",
+                    features: "Chip COB CRI>95.",
+                    applications: "Nhà, trung tâm mua sắm, khách sạn, cửa hàng, phòng trưng bày, triển lãm.",
+                    variants: [
+                        { power: "10W", light: "3000K/4000K/6500K", price: "Liên hệ" }
+                    ]
+                }
+            ],
+            "Đèn LED Ốp Trần": [
+                {
+                    name: "Đèn LED ốp trần Classic",
+                    image: "https://i.postimg.cc/KjRDZP3J/page3-img10.jpg",
+                    description: "Đèn LED ốp trần, thiết kế tròn hoặc vuông.",
+                    features: "Hiệu suất 80lm/W, CRI > 80, dải điện áp 170V-240V.",
+                    applications: "Chiếu sáng dân dụng, văn phòng.",
+                    variants: [
+                        { power: "12W", light: "6500K/3000K/Đổi màu", price: "195.000 VND" },
+                        { power: "18W", light: "6500K/3000K/Đổi màu", price: "255.000 VND" },
+                        { power: "24W", light: "6500K/3000K/Đổi màu", price: "328.000 VND" }
+                    ]
+                },
+                {
+                    name: "Đèn LED ốp trần Plush",
+                    image: "https://i.postimg.cc/FsS0Dsyd/page51-img5.jpg",
+                    description: "Đèn LED ốp trần, thiết kế tròn hoặc vuông.",
+                    features: "Hiệu suất 90lm/W, CRI > 80, dải điện áp 170V-240V.",
+                    applications: "Chiếu sáng dân dụng, văn phòng.",
+                    variants: [
+                        { power: "6W", light: "6500K/3000K/Đổi màu", price: "152.000 VND" },
+                        { power: "12W", light: "6500K/3000K/Đổi màu", price: "219.000 VND" },
+                        { power: "18W", light: "6500K/3000K/Đổi màu", price: "279.000 VND" },
+                        { power: "24W", light: "6500K/3000K/Đổi màu", price: "448.000 VND" }
+                    ]
+                },
+                {
+                    name: "Đèn LED ốp trần Happy",
+                    image: "https://i.postimg.cc/T2FrVWDv/page51-img4.jpg",
+                    description: "Đèn LED ốp trần, thiết kế tròn hoặc vuông.",
+                    features: "Hiệu suất 90lm/W, CRI > 80, dải điện áp 170V-240V.",
+                    applications: "Chiếu sáng dân dụng, văn phòng.",
+                    variants: [
+                        { power: "18W", light: "6500K/4000K/3000K", price: "137.000 VND" },
+                        { power: "24W", light: "6500K/4000K/3000K", price: "191.000 VND" },
+                        { power: "36W", light: "6500K/4000K/3000K", price: "296.000 VND" }
+                    ]
+                },
+                {
+                    name: "Đèn ốp trần tràn viền",
+                    image: "https://i.postimg.cc/B6JhGPCV/page2-img7.jpg", // Using a fallback image for tràn viền
+                    description: "Đèn LED ốp trần, thiết kế tràn viền hiện đại.",
+                    features: "Hiệu suất 90lm/W, CRI > 80, dải điện áp 170V-240V.",
+                    applications: "Chiếu sáng dân dụng, văn phòng.",
+                    variants: [
+                        { power: "15W", light: "6500K/4000K", price: "229.000 VND" },
+                        { power: "24W", light: "6500K/4000K", price: "289.000 VND" }
+                    ]
+                },
+                 {
+                    name: "Kim cương (Kosoom)",
+                    image: "https://i.postimg.cc/Z53jBx7Q/page3-img8.jpg", // Placeholder
+                    description: "Ốp nổi, diện tích chiếu sáng rộng.",
+                    features: "Thiết kế viền kim cương, hạt thấu kính LENS, khung vỏ nhôm, chip LED Sanan.",
+                    applications: "Phòng khách, phòng ngủ, phòng ăn, hành lang, ban công, văn phòng, showroom, trung tâm thương mại.",
+                    variants: [
+                        { power: "14W", light: "6500K/Đổi màu", price: "Liên hệ" },
+                        { power: "36W", light: "6500K/Đổi màu", price: "Liên hệ" }
+                    ]
+                },
+                {
+                    name: "Pha lê (Kosoom)",
+                    image: "https://i.postimg.cc/TP60r5B3/page3-img7.jpg", // Placeholder
+                    description: "Ốp nổi, diện tích chiếu sáng rộng.",
+                    features: "Viền pha lê, chao đèn mờ, hạt thấu kính LENS, khung vỏ nhôm, chip LED Sanan.",
+                    applications: "Phòng khách, phòng ngủ, phòng ăn, hành lang, ban công, văn phòng, showroom.",
+                    variants: [
+                        { power: "(36-36-72)W", light: "Đổi màu", price: "Liên hệ" }
+                    ]
+                },
+                {
+                    name: "Artemis (Kosoom)",
+                    image: "https://i.postimg.cc/CL9mxQND/page3-img6.jpg", // Placeholder
+                    description: "Ốp nổi, diện tích chiếu sáng rộng.",
+                    features: "Thiết kế tối giản, chao đèn mờ, hạt thấu kính LENS, khung vỏ nhôm, chip LED Sanan.",
+                    applications: "Phòng khách, phòng ngủ, phòng ăn, hành lang, ban công, văn phòng, showroom.",
+                    variants: [
+                        { power: "20W", light: "6500K/Đổi màu", price: "Liên hệ" },
+                        { power: "(36-36-72)W", light: "6500K/Đổi màu", price: "Liên hệ" }
+                    ]
+                },
+                {
+                    name: "Sky (Kosoom)",
+                    image: "https://i.postimg.cc/QxFfs3ph/page3-img5.jpg", // Placeholder
+                    description: "Ốp nổi, diện tích chiếu sáng rộng.",
+                    features: "Nhiều kiểu dáng (vuông/tròn, mây, ngôi sao, mặt trời), chao đèn mờ, hiệu ứng ánh sáng, hạt thấu kính LENS, khung vỏ nhôm, chip LED Sanan.",
+                    applications: "Phòng khách, phòng ngủ, phòng ăn, văn phòng, showroom.",
+                    variants: [
+                        { power: "(48-48-96)W", light: "Đổi màu", price: "Liên hệ" }
+                    ]
+                }
+            ],
+            "Dây LED": [
+                {
+                    name: "Dây LED Galaxy",
+                    image: "https://i.postimg.cc/qB5G15WY/page4-img3.jpg",
+                    description: "Dây LED trang trí, nhiều màu sắc.",
+                    features: "Dải điện áp 12V/24V, chip LED SMD, Driver ổn định.",
+                    applications: "Trang trí nội ngoại thất, quán cafe, nhà hàng.",
+                    variants: [
+                        { length: "5m", light: "RGB, Trắng, Vàng", price: "Liên hệ" }
+                    ]
+                },
+                {
+                    name: "Dây LED 12V/24V",
+                    image: "https://i.postimg.cc/DZCckj0S/page4-img4.jpg",
+                    description: "Dây LED sử dụng điện áp thấp 12V hoặc 24V.",
+                    features: "Dải điện áp 12V/24V, chip LED SMD, Driver ổn định.",
+                    applications: "Trang trí nội ngoại thất, chiếu sáng tủ, kệ.",
+                    variants: [
+                        { length: "5m", light: "Trắng, Vàng, Xanh, Đỏ", price: "Liên hệ" }
+                    ]
+                },
+                {
+                    name: "Dây LED 24 SMD/COB",
+                    image: "https://i.postimg.cc/PJ9zNCmh/page4-img5.jpg",
+                    description: "Dây LED sử dụng chip SMD hoặc COB.",
+                    features: "Dải điện áp 12V/24V, chip LED SMD/COB, Driver ổn định.",
+                    applications: "Trang trí nội ngoại thất, chiếu sáng tủ, kệ.",
+                    variants: [
+                        { power: "10W/m", light: "3000K/4000K/6500K (SMD)", price: "56.000 VND/m" },
+                        { power: "10W/m", light: "3000K/4000K/6500K (COB)", price: "99.000 VND/m" }
+                    ]
+                },
+                {
+                    name: "Nguồn dây LED 24V",
+                    image: "https://i.postimg.cc/Jzbc44tV/page4-img7.jpg",
+                    description: "Nguồn cấp điện cho dây LED 24V.",
+                    features: "Điện áp đầu vào 220V, điện áp đầu ra 24V.",
+                    applications: "Cấp điện cho dây LED 24V.",
+                    variants: [
+                        { power: "60W", output: "2.50A", price: "265.000 VND" },
+                        { power: "100W", output: "4.20A", price: "331.000 VND" },
+                        { power: "150W", output: "6.25A", price: "347.000 VND" },
+                        { power: "200W", output: "8.30A", price: "364.000 VND" },
+                        { power: "300W", output: "12.50A", price: "463.000 VND" },
+                        { power: "400W", output: "16.70A", price: "545.000 VND" }
+                    ]
+                },
+                {
+                    name: "Dây LED Happy",
+                    image: "https://i.postimg.cc/d0wR7PT7/page4-img8.jpg",
+                    description: "Dây LED trang trí, nhiều màu sắc, hiệu ứng.",
+                    features: "Dải điện áp 12V/24V, chip LED SMD, Driver ổn định, có remote điều khiển.",
+                    applications: "Trang trí nội ngoại thất, quán cafe, nhà hàng.",
+                    variants: [
+                        { power: "11W/m", light: "6500K/4000K/3000K", price: "39.000 VND/m" },
+                        { power: "11W/m", light: "BLUE", price: "46.000 VND/m" },
+                        { power: "11W/m", light: "TRẮNG VÀNG/XANH VÀNG", price: "58.000 VND/m" }
+                    ]
+                }
+            ],
+            "Đèn Pha LED": [
+                {
+                    name: "Đèn pha LED V2",
+                    image: "https://i.postimg.cc/Fs6nJR9Y/page2-img3.jpg",
+                    description: "Đèn pha LED chiếu sáng ngoài trời. Cải tiến từ Đèn pha LED.",
+                    features: "Công suất cao, chiếu sáng xa, chống nước, chống bụi IP65, dải điện áp 170V-240V.",
+                    applications: "Chiếu sáng sân, vườn, bảng hiệu, công trình.",
+                    variants: [
+                        { power: "10W", light: "6500K/3000K", price: "199.000 VND" },
+                        { power: "20W", light: "6500K/4000K/3000K", price: "259.000 VND" },
+                        { power: "30W", light: "6500K/3000K", price: "359.000 VND" },
+                        { power: "50W", light: "6500K/4000K/3000K", price: "499.000 VND" },
+                        { power: "100W", light: "6500K/4000K/3000K", price: "849.000 VND" },
+                        { power: "150W", light: "6500K", price: "1.099.000 VND" },
+                        { power: "200W", light: "6500K", price: "1.499.000 VND" },
+                        { power: "300W", light: "6500K", price: "2.199.000 VND" }
+                    ]
+                },
+                {
+                    name: "Đèn pha RGB",
+                    image: "https://i.postimg.cc/TY14wmX8/page2-img2.jpg",
+                    description: "Đèn pha LED chiếu sáng ngoài trời, đổi màu RGB.",
+                    features: "Công suất cao, chiếu sáng xa, chống nước, chống bụi IP65, có remote điều khiển đổi màu.",
+                    applications: "Chi chiếu sáng sân, vườn, bảng hiệu, công trình, trang trí.",
+                    variants: [
+                        { power: "50W", light: "RGB", price: "1.238.000 VND" }
+                    ]
+                }
+            ],
+            "Đèn Năng Lượng Mặt Trời": [
+                {
+                    name: "Đèn pha Năng lượng mặt trời",
+                    image: "https://i.postimg.cc/t40NjVqN/page4-img6.jpg",
+                    description: "Đèn pha sử dụng năng lượng mặt trời.",
+                    features: "Tấm pin NLMT, pin sạc dự trữ, cảm biến ánh sáng, remote điều khiển, chống nước IP65.",
+                    applications: "Chiếu sáng sân, vườn, bảng hiệu, công trình ở những nơi không có điện lưới.",
+                    variants: [
+                        { power: "100W", light: "6500K", price: "1.668.000 VND" },
+                        { power: "200W", light: "6500K", price: "2.468.000 VND" },
+                        { power: "300W", light: "6500K", price: "3.268.000 VND" }
+                    ]
+                },
+                {
+                    name: "Đèn Trụ Năng lượng mặt trời",
+                    image: "https://i.postimg.cc/Kzsts1pL/page5-img2.jpg",
+                    description: "Đèn trụ sử dụng năng lượng mặt trời.",
+                    features: "Tấm pin NLMT, pin sạc dự trữ, cảm biến ánh sáng, remote điều khiển, chống nước IP65.",
+                    applications: "Chiếu sáng đường đi, công viên, sân vườn.",
+                    variants: [
+                        { power: "400lm", light: "Đổi màu", price: "1.586.000 VND" }
+                    ]
+                },
+                {
+                    name: "Đèn tường Năng lượng mặt trời",
+                    image: "https://i.postimg.cc/cJhRw9QF/page5-img3.jpg",
+                    description: "Đèn tường sử dụng năng lượng mặt trời.",
+                    features: "Tấm pin NLMT, pin sạc dự trữ, cảm biến ánh sáng, chống nước IP65.",
+                    applications: "Chiếu sáng tường nhà, ban công, cửa.",
+                    variants: [
+                        { power: "400lm", light: "Đổi màu", price: "693.000 VND" }
+                    ]
+                }
+            ],
+            "Đèn Ống Bơ": [
+                {
+                    name: "Đèn LED Bơ Tỏa",
+                    image: "https://i.postimg.cc/MTGyD75q/page5-img4.jpg",
+                    description: "Ống bơ ánh sáng tỏa, thiết kế trụ tròn.",
+                    features: "Hiệu suất 85lm/W, CRI > 80, dải điện áp 170V-240V.",
+                    applications: "Chiếu sáng dân dụng, văn phòng.",
+                    variants: [
+                        { power: "9W", light: "6500K/4000K/3000K/Đổi màu", price: "258.000 VND" },
+                        { power: "12W", light: "6500K/4000K/3000K/Đổi màu", price: "324.000 VND" }
+                    ]
+                },
+                {
+                    name: "Đèn LED Ống Bơ COB-S",
+                    image: "https://i.postimg.cc/BbL2WJRz/page5-img5.jpg",
+                    description: "Ống bơ chiếu điểm, sử dụng chip COB.",
+                    features: "Hiệu suất >85lm/W, CRI > 90, dải điện áp 170V-240V.",
+                    applications: "Chiếu sáng dân dụng, văn phòng, cửa hàng.",
+                    variants: [
+                        { power: "10W", light: "6500K/4000K/3000K/Đổi màu", price: "459.000 VND" },
+                        { power: "12W", light: "6500K/4000K/3000K/Đổi màu", price: "479.000 VND" },
+                        { power: "15W", light: "6500K/4000K/3000K", price: "669.000 VND" },
+                        { power: "18W", light: "6500K/4000K/3000K", price: "699.000 VND" }
+                    ]
+                },
+                {
+                    name: "Đèn LED Ống Bơ COB-H",
+                    image: "https://i.postimg.cc/prwzRgHL/page5-img6.jpg",
+                    description: "Ống bơ chiếu điểm, sử dụng chip COB. Công suất cao.",
+                    features: "Hiệu suất >85lm/W, CRI > 90, dải điện áp 170V-240V.",
+                    applications: "Chiếu sáng dân dụng, văn phòng, cửa hàng, nhà xưởng.",
+                    variants: [
+                        { power: "10W", light: "6500K/4000K/3000K/Đổi màu", price: "459.000 VND" },
+                        { power: "12W", light: "6500K/4000K/3000K/Đổi màu", price: "479.000 VND" },
+                        { power: "15W", light: "6500K/4000K/3000K", price: "599.000 VND" },
+                        { power: "18W", light: "6500K/4000K/3000K", price: "629.000 VND" }
+                    ]
+                }
+            ],
+            "Quạt Trần Đèn": [
+                {
+                    name: "Đèn quạt 5 và 6 cánh",
+                    image: "https://i.postimg.cc/LsxPnqp7/page99-img2.jpg",
+                    description: "Quạt trần kết hợp đèn, 5 hoặc 6 cánh.",
+                    features: "Động cơ DC tiết kiệm điện, nhiều tốc độ gió, đèn LED chiếu sáng, remote điều khiển.",
+                    applications: "Chiếu sáng và làm mát phòng khách, phòng ngủ.",
+                    variants: [
+                        { fan_power: "35W", light_power: "20W", blades: "5 cánh", light: "3000K/4000K/6500K", price: "3.600.000 VND" },
+                        { fan_power: "55W", light_power: "20W", blades: "6 cánh", light: "2000Lm", price: "4.500.000 VND" }
+                    ]
+                },
+                {
+                    name: "Đèn quạt 8 cánh",
+                    image: "https://i.postimg.cc/d1m8mJzP/page101-img2.jpg", // Using the 8-blade image
+                    description: "Quạt trần kết hợp đèn, 8 cánh.",
+                    features: "Động cơ DC tiết kiệm điện, nhiều tốc độ gió, đèn LED chiếu sáng, remote điều khiển.",
+                    applications: "Chiếu sáng và làm mát phòng khách, phòng ngủ, phòng họp.",
+                    variants: [
+                        { fan_power: "55W", light_power: "20W", blades: "8 cánh", light: "2000Lm", price: "6.900.000 VND" }
+                    ]
+                }
+            ],
+            "Đèn Pin": [
+                {
+                    name: "Đèn pin đội đầu 303",
+                    image: "https://i.postimg.cc/hjhdxS4G/page104-img2.jpg",
+                    description: "Đèn pin đội đầu, sử dụng pin sạc.",
+                    features: "Ánh sáng mạnh, nhiều chế độ chiếu sáng, chống nước, chống bụi.",
+                    applications: "Chiếu sáng khi đi cắm trại, leo núi, sửa chữa.",
+                    variants: [
+                        { battery: "3.6V - 2400mA", charger: "4.2V - 600mA", light: "6500K/3000K", price: "173.000 VND" }
+                    ]
+                },
+                {
+                    name: "Đèn pin đội đầu 304",
+                    image: "https://i.postimg.cc/26JB7P37/page106-img2.jpg",
+                    description: "Đèn pin đội đầu, sử dụng pin sạc. Cải tiến từ 303.",
+                    features: "Ánh sáng mạnh, nhiều chế độ chiếu sáng, chống nước, chống bụi.",
+                    applications: "Chi chiếu sáng khi đi cắm trại, leo núi, sửa chữa.",
+                    variants: [
+                        { battery: "3.6V-3600mA", charger: "4.2V - 800mA", light: "6500K/3000K", price: "224.000 VND" }
+                    ]
+                },
+                {
+                    name: "Đèn pin đội đầu T6",
+                    image: "https://i.postimg.cc/yxZ3QvZ4/page108-img2.jpg",
+                    description: "Đèn pin đội đầu, sử dụng pin sạc, chip LED T6.",
+                    features: "Ánh sáng cực mạnh, zoom được, nhiều chế độ chiếu sáng, chống nước, chống bụi.",
+                    applications: "Chiếu sáng khi đi cắm trại, leo núi, sửa chữa, tuần tra.",
+                    variants: [
+                        { battery: "3.6V-5200mA", charger: "4.2V - 800mA", light: "6500K/3000K", price: "542.000 VND" }
+                    ]
+                },
+                {
+                    name: "Đèn pin cầm tay NLMT JO2",
+                    image: "https://i.postimg.cc/LhFYrLtq/page110-img2.jpg",
+                    description: "Đèn pin cầm tay, sử dụng năng lượng mặt trời và pin sạc.",
+                    features: "Tấm pin NLMT, pin sạc dự trữ, ánh sáng mạnh, nhiều chế độ chiếu sáng, cổng sạc USB, chống nước.",
+                    applications: "Chiếu sáng khi đi cắm trại, leo núi, sửa chữa, sử dụng hàng ngày.",
+                    variants: [
+                        { battery: "3.6V-1800mA", charger: "USB/Solar", light: "6500K/3000K", price: "201.000 VND" }
+                    ]
+                }
+            ]
+        };
+
+        // Function to generate product details HTML
+        function generateProductDetailsHtml(categoryName) {
+            let html = `<h4 class="text-xl font-semibold text-white mb-4">${categoryName}</h4>`;
+            const categoryProducts = productDetails[categoryName];
+            if (categoryProducts && categoryProducts.length > 0) {
+                categoryProducts.forEach(product => {
+                    html += `
+                        <div class="bg-gray-700/30 p-4 rounded-lg mb-4">
+                            <div class="flex flex-col md:flex-row items-center md:items-start gap-4 mb-4">
+                                ${product.image ? `<img src="${product.image}" alt="${product.name}" class="w-48 h-48 object-contain flex-shrink-0 rounded-lg shadow-md" onerror="this.onerror=null; this.src='https://placehold.co/300x200/232946/B8C1EC?text=Không có ảnh';">` : ''}
+                                <div class="flex-1 flex-grow">
+                                    <p class="text-lg font-medium text-white mb-1">${product.name}</p>
+                                    <p class="text-sm text-gray-300 mb-1">Mô tả: ${product.description}</p>
+                                    <p class="text-sm text-gray-300 mb-1">Đặc điểm: ${product.features}</p>
+                                    <p class="text-sm text-gray-300 mb-1">Ứng dụng: ${product.applications}</p>
+                                </div>
+                            </div>
+                    `;
+                    
+                    if (product.variants && product.variants.length > 0) {
+                        // Collect all unique keys for headers
+                        const allKeys = new Set();
+                        product.variants.forEach(variant => {
+                            Object.keys(variant).forEach(key => allKeys.add(key));
+                        });
+                        const headers = Array.from(allKeys);
+
+                        html += `<table class="product-table"><thead><tr>`;
+                        headers.forEach(header => {
+                            html += `<th>${header.replace(/_/g, ' ')}</th>`;
+                        });
+                        html += `</tr></thead><tbody>`;
+
+                        product.variants.forEach(variant => {
+                            html += `<tr>`;
+                            headers.forEach(header => {
+                                html += `<td>${variant[header] !== undefined ? variant[header] : 'N/A'}</td>`;
+                            });
+                            html += `</tr>`;
+                        });
+                        html += `</tbody></table>`;
+                    }
+                    html += `</div>`;
+                });
+            } else {
+                html += `<p class="text-center text-gray-400">Không có dữ liệu chi tiết cho danh mục này.</p>`;
             }
+            return html;
         }
 
-        getProductDiversityInsightBtn.addEventListener('click', () => {
-            const prompt = `Dựa trên dữ liệu về số lượng loại sản phẩm của MAXBEN (Đèn LED Bulb: 2, Đèn Tuýp LED: 4, Đèn LED Âm Trần: 7, Đèn LED Ốp Trần: 4, Dây LED: 5, Đèn Pha LED: 2, Đèn Năng Lượng Mặt Trời: 3, Đèn Ống Bơ: 3, Quạt Trần Đèn: 2, Đèn Pin: 4), hãy phân tích mức độ đa dạng của danh mục sản phẩm và tầm quan trọng của nó trong việc đáp ứng nhu cầu thị trường.`;
-            getGeminiInsight(prompt);
+        // Event listeners for product category buttons
+        const productDetailsContent = document.getElementById('productDetailsContent');
+        document.querySelectorAll('.product-category-button').forEach(button => {
+            button.addEventListener('click', (event) => {
+                const category = event.target.dataset.category;
+                productDetailsContent.innerHTML = generateProductDetailsHtml(category);
+            });
         });
 
-        getQualityAdvantageInsightBtn.addEventListener('click', () => {
-            const prompt = `Dựa trên các chỉ số chất lượng chính của sản phẩm MAXBEN (CRI > 98, Tuổi thọ > 30,000 giờ, Bảo hành 36-60 tháng), hãy giải thích ưu thế cạnh tranh của MAXBEN về chất lượng và độ bền so với các sản phẩm thông thường trên thị trường.`;
-            getGeminiInsight(prompt);
-        });
-
-        getApplicationAreasInsightBtn.addEventListener('click', () => {
-            const prompt = `Dựa trên dữ liệu phân bổ sản phẩm theo lĩnh vực ứng dụng của MAXBEN (Dân dụng & Trang trí: 10, Thương mại & Văn phòng: 8, Công nghiệp & Nhà xưởng: 5, Ngoài trời & Chuyên dụng: 4, Di động & Đặc biệt: 2), hãy phân tích cách MAXBEN mở rộng phạm vi ứng dụng và lợi ích của việc đa dạng hóa này đối với khách hàng.`;
-            getGeminiInsight(prompt);
-        });
+        // No AI insights section or related JS functions
     </script>
 </body>
 </html>
