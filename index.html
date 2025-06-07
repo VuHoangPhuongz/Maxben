@@ -14,6 +14,10 @@
             font-family: 'Be Vietnam Pro', sans-serif;
             background-color: #232946;
             color: #B8C1EC;
+ -webkit-user-select: none;  /* Safari */
+    -moz-user-select: none;     /* Firefox */
+    -ms-user-select: none;      /* IE 10+ */
+    user-select: none;          /* Standard */
         }
 
         .chart-container {
@@ -451,7 +455,24 @@
                 lightAccent: '#B8C1EC',
                 white: '#FFFFFF'
             };
-
+document.onkeydown = function(e) {
+    if (e.keyCode == 123) { // F12
+        return false;
+    }
+    if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) { // Ctrl+Shift+I
+        return false;
+    }
+    if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) { // Ctrl+Shift+C
+        return false;
+    }
+    if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) { // Ctrl+Shift+J
+        return false;
+    }
+    if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) { // Ctrl+U (view source)
+        return false;
+    }
+}
+document.addEventListener('contextmenu', event => event.preventDefault()); // Vô hiệu hóa chuột phải
             const chartTooltipConfig = {
                 plugins: {
                     tooltip: {
